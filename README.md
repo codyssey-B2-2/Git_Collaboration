@@ -2,4 +2,4 @@
 
 ## 팀원 소개
 
-- [VectorSophie](team/VectorSophie.md.md)
+- [VectorSophie](team/VectorSophie.md)
