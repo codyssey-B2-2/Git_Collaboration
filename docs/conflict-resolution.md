@@ -1,6 +1,6 @@
 # Conflict Resolution Log
 
-## 충돌 기록 #1
+## 충돌 기록 #137
 ### 참여자
 - 작성자: <name>
 - 상대: <name>
