@@ -19,9 +19,9 @@
 - [Troubleshooting Log](docs/troubleshooting-log.md)
 
 ## 사용 기술 및 환경
-- Git
-- GitHub
-- Python 3.10+
+![Git](https://img.shields.io/badge/Git-required-F05032?logo=git&logoColor=white)
+![GitHub](https://img.shields.io/badge/GitHub-required-181717?logo=github&logoColor=white)
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)
 
 ## 최근 작업사항 & 작업자
 ![GitHub last commit](https://img.shields.io/github/last-commit/codyssey-B2-2/Git_Collaboration)
