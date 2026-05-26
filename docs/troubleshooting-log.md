@@ -96,3 +96,93 @@
 
 ### 왜 이 방법을 선택했는가(Why)
 - 작업 이력과 복구 이력을 모두 커밋 히스토리에 남길 수 있기 때문.
+
+## 보너스 과제: git rebase -i 히스토리 정리
+
+### 참여자
+
+* VectorSophie
+
+---
+
+### 상황
+
+README 작업 과정에서 여러 개의 작은 수정 커밋이 생성되었다.
+
+초기 커밋 히스토리:
+
+```txt
+a87f841 feat: actually use shield badge
+1207a7b feat: fill up readme with recent workflow, tech and such
+582391b feat: fill up readme with lively architectural decisions
+```
+
+커밋 수가 많고 변경 내용이 분산되어 있어, 하나의 의미 있는 작업 단위로 정리할 필요가 있었다.
+
+---
+
+### 시도한 명령 / 절차
+
+1. 최근 커밋 확인
+
+```bash
+git log --oneline
+```
+
+2. 최근 3개 커밋 interactive rebase 실행
+
+```bash
+git rebase -i HEAD~3
+```
+
+3. rebase 편집기에서 squash를 사용하여 커밋 통합
+
+예시:
+
+```txt
+pick 582391b feat: fill up readme with lively architectural decisions
+squash 1207a7b feat: fill up readme with recent workflow, tech and such
+squash a87f841 feat: actually use shield badge
+```
+
+4. 최종 커밋 메시지 정리 후 저장
+
+5. rebase 이후 변경된 commit hash를 원격 브랜치에 반영
+
+```bash
+git push origin feature/VectorSophie/fill-readme --force-with-lease
+```
+
+---
+
+### 결과
+
+rebase 이후 여러 개의 작은 수정 커밋이 하나의 정리된 커밋으로 통합되었다.
+
+정리 후 히스토리:
+
+```txt
+08209d7 feat: fill up readme with lively architectural decisions
+```
+
+덕분에 commit history 가독성이 향상되었고, 하나의 작업 목적이 명확하게 드러나게 되었다.
+
+---
+
+### 주의할 점
+
+* rebase는 기존 commit hash를 변경하므로 force push가 필요하다.
+* 공유 브랜치에서 협의 없이 rebase를 수행하면 충돌이나 작업 손실 위험이 존재한다.
+* force push 대신 `--force-with-lease` 사용이 더 안전하다.
+
+---
+
+### 왜 이 방법을 선택했는가 (Why)
+
+작은 수정 단위 커밋들을 하나의 의미 있는 작업 흐름으로 정리하기 위해 interactive rebase를 사용했다.
+
+이를 통해:
+
+* commit history를 읽기 쉽게 만들고
+* 리뷰 및 유지보수 효율을 높이며
+* 불필요하게 세분화된 수정 기록을 정리할 수 있었다.
